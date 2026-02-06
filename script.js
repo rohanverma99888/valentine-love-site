@@ -23,6 +23,7 @@ sections.forEach(section => {
 
 
 
+
 /* =========================
    FADE IN ON SCROLL
 ========================= */
@@ -796,5 +797,6 @@ setInterval(()=>{
     setTimeout(()=>h.remove(),6000);
 }, 600);
 toggle.onclick = ()=> document.body.classList.toggle("dark");
+
 
 
