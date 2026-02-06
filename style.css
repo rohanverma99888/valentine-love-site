@@ -1,0 +1,824 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(#ffe6f0, #fff);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #e91e63;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.scroll {
+    margin-top: 40px;
+    opacity: 0.7;
+}
+
+/* chapters */
+.chapter {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
+
+    padding: 40px 20px;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s;
+}
+
+
+.chapter.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chapter h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+.chapter p {
+    max-width: 650px;      /* controls text width */
+    margin: 0 auto;        /* centers block */
+    text-align: center;    /* centers text */
+
+    font-size: 1.2rem;
+    line-height: 1.9;
+
+    padding: 0 20px;       /* mobile spacing */
+}
+.chapter {
+    text-align: center;
+}
+
+.chapter p {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+
+/* locked */
+.locked {
+    filter: blur(6px);
+    pointer-events: none;
+}
+
+.finale {
+    background: #fff0f6;
+}
+
+/* music button */
+#musicBtn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    background: #e91e63;
+    color: white;
+    cursor: pointer;
+}
+
+/* countdown */
+#countdown {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+#lockMsg {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.6;
+}
+
+/* animation part */
+
+/* animation container */
+.bg-animation {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* floating emoji */
+.particle {
+    position: absolute;
+    font-size: 22px;
+    opacity: 0.25;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+/* important */
+.chapter {
+    position: relative;
+}
+
+/* backgrounds per day */
+
+.rose {
+    background: linear-gradient(135deg, #ffe6ef, #fff);
+}
+
+.propose {
+    background: linear-gradient(135deg, #ffe0ea, #fff5f8);
+}
+
+.chocolate {
+    background: linear-gradient(135deg, #f5e1d8, #fff);
+}
+
+.teddy {
+    background: linear-gradient(135deg, #fff6e6, #fff);
+}
+
+.promise {
+    background: linear-gradient(135deg, #fff3d6, #ffe0b3);
+}
+
+.hug {
+    background: linear-gradient(135deg, #e6f7ff, #ffffff);
+}
+
+.kiss {
+    background: linear-gradient(135deg, #2c2c54, #40407a);
+    color: white;
+}
+
+.finale {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+/* =========================
+   GLASS CARD LOOK
+========================= */
+
+.chapter {
+    border-radius: 28px;
+    margin: 60px auto;
+    width: 92%;
+    max-width: 900px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+
+    transform: translateY(60px) scale(.95);
+    transition: 1s ease;
+}
+
+.chapter.show {
+    transform: translateY(0) scale(1);
+}
+
+/* =========================
+   HERO GLOW
+========================= */
+
+.hero h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg,#ff2e88,#ff7aa8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px #ff7aa8); }
+    to   { filter: drop-shadow(0 0 20px #ff2e88); }
+}
+
+
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(90deg,#ff2e88,#ff9bb3);
+    width: 0%;
+    z-index: 9999;
+}
+
+/* =========================
+   BETTER MUSIC BUTTON
+========================= */
+
+#musicBtn {
+    backdrop-filter: blur(8px);
+    background: rgba(233,30,99,0.85);
+    box-shadow: 0 10px 30px rgba(233,30,99,.4);
+    transition: .3s;
+}
+
+#musicBtn:hover {
+    transform: scale(1.08);
+}
+
+/* =========================
+   HEART CURSOR
+========================= */
+
+.heart {
+    position: fixed;
+    pointer-events: none;
+    animation: floatHeart 1.2s forwards;
+    font-size: 14px;
+}
+
+@keyframes floatHeart {
+    to {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+}
+
+/* mobile */
+@media(max-width:768px){
+    .hero h1{font-size:2.3rem}
+    .chapter{margin:30px 12px}
+}
+
+/* =========================
+   GLASS CARD (inside chapter)
+========================= */
+
+.card {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    padding: 50px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    max-width: 850px;
+    width: 100%;
+}
+/* =========================
+   ROSE DAY BUTTONS
+========================= */
+
+.love-actions {
+    margin-top: 35px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+}
+
+.love-actions button {
+    padding: 12px 26px;
+    border-radius: 40px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+/* YES */
+.yesBtn {
+    background: linear-gradient(45deg,#ff2e88,#ff6aa6);
+    color: white;
+    box-shadow: 0 10px 25px rgba(255,46,136,.4);
+}
+
+.yesBtn:hover {
+    transform: scale(1.12);
+}
+
+/* glow after success */
+.yesBtn.success {
+    animation: glowBtn 1s infinite alternate;
+}
+
+@keyframes glowBtn {
+    from { box-shadow: 0 0 10px #ff2e88; }
+    to   { box-shadow: 0 0 30px #ff2e88; }
+}
+
+/* NO */
+.noBtn {
+    background: #f2f2f2;
+    position: relative;
+}
+
+/* message */
+.responseMsg {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #e91e63;
+}
+/* =========================
+   PROPOSE DAY POPUP CARD
+========================= */
+
+.proposal-box {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.proposal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.proposal-actions button {
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: .25s;
+    font-size: 15px;
+}
+
+/* YES */
+.proposeYes {
+    background: linear-gradient(45deg,#ff4d88,#ff9bb3);
+    color: white;
+}
+
+/* NO */
+.proposeNo {
+    background: #eee;
+}
+
+/* shake animation */
+@keyframes shake {
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-6px)}
+    50%{transform:translateX(6px)}
+    75%{transform:translateX(-6px)}
+    100%{transform:translateX(0)}
+}
+
+.proposeNo.shake {
+    animation: shake .35s;
+}
+
+/* ring animation */
+.ring {
+    font-size: 60px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ringPop 1s forwards;
+    pointer-events: none;
+}
+
+@keyframes ringPop {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    70% { transform: translate(-50%, -50%) scale(1.4); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.proposalMsg {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #e91e63;
+}
+/* =========================
+   CHOCOLATE DAY
+========================= */
+
+.choco-box {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.chocoBtn {
+    background: linear-gradient(45deg,#6b3e26,#b97a56);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    transition: .25s;
+}
+
+.chocoBtn:hover {
+    transform: scale(1.1);
+}
+
+.chocoMsg {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #6b3e26;
+}
+
+/* falling chocolate */
+.chocoPiece {
+    position: fixed;
+    top: -20px;
+    font-size: 20px;
+    pointer-events: none;
+}
+/* =========================
+   TEDDY DAY
+========================= */
+
+.teddy-box {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.teddyBtn {
+    background: linear-gradient(45deg,#ffb347,#ffcc80);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,170,80,.35);
+    transition: .25s;
+}
+
+.teddyBtn:hover {
+    transform: scale(1.1);
+}
+
+.teddyMsg {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #ff8c42;
+}
+
+/* big teddy pop */
+.bigTeddy {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 120px;
+    pointer-events: none;
+    animation: teddyPop 1s forwards;
+}
+
+@keyframes teddyPop {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    60% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* floating plush */
+.plush {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+}
+
+/* warm glow */
+body.teddyGlow {
+    box-shadow: inset 0 0 200px rgba(255,180,120,.35);
+    transition: 0.8s;
+}
+/* =========================
+   PROMISE DAY
+========================= */
+
+.promise-box {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.promiseBtn {
+    background: linear-gradient(45deg,#ffd86f,#ffb347);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,190,80,.35);
+    transition: .25s;
+}
+
+.promiseBtn:hover {
+    transform: scale(1.1);
+}
+
+.promiseBtn.lockedForever {
+    background: #ccc;
+    cursor: default;
+}
+
+.promiseMsg {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #e67e22;
+}
+
+/* handshake pop */
+.handshake {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 90px;
+    pointer-events: none;
+    animation: handPop 1s forwards;
+}
+
+@keyframes handPop {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    60% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* sparkle */
+.sparkle {
+    position: fixed;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* heartbeat glow */
+body.promiseGlow {
+    animation: heartbeat 1.2s ease-in-out 2;
+}
+
+@keyframes heartbeat {
+    0% { box-shadow: inset 0 0 0 rgba(255,200,120,0); }
+    50% { box-shadow: inset 0 0 180px rgba(255,200,120,.35); }
+    100% { box-shadow: inset 0 0 0 rgba(255,200,120,0); }
+}
+/* =========================
+   HUG DAY
+========================= */
+
+.hug-box {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.hugBtn {
+    background: linear-gradient(45deg,#7ed6df,#e056fd);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 35px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(150,120,255,.35);
+    transition: .25s;
+}
+
+.hugBtn:hover {
+    transform: scale(1.1);
+}
+
+.hugMsg {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #6c5ce7;
+}
+
+/* background cuddle glow */
+body.hugGlow {
+    animation: hugWarm 1.5s ease-in-out;
+}
+
+@keyframes hugWarm {
+    0% { box-shadow: inset 0 0 0 rgba(255,170,200,0); }
+    50% { box-shadow: inset 0 0 200px rgba(255,170,200,.4); }
+    100% { box-shadow: inset 0 0 0 rgba(255,170,200,0); }
+}
+
+/* hearts merging */
+.hugHeart {
+    position: fixed;
+    font-size: 40px;
+    pointer-events: none;
+}
+
+/* floating mini hearts */
+.miniHeart {
+    position: fixed;
+    font-size: 14px;
+    pointer-events: none;
+}
+/* =========================
+   KISS DAY
+========================= */
+
+.kiss-box {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.kissBtn {
+    background: linear-gradient(45deg,#ff4d6d,#ff99ac);
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,80,120,.35);
+    transition: .25s;
+}
+
+.kissBtn:hover {
+    transform: scale(1.1);
+}
+
+.kissMsg {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #ff4d6d;
+    opacity: 0;
+    transition: 1s;
+}
+
+/* cinematic dark overlay */
+.kissOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* kiss pop */
+.kissMark {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    font-size: 90px;
+    pointer-events: none;
+    animation: kissPop 1s forwards;
+    z-index: 1000;
+}
+
+@keyframes kissPop {
+    0% { transform: translate(-50%,-50%) scale(0); }
+    60% { transform: translate(-50%,-50%) scale(1.4); }
+    100% { transform: translate(-50%,-50%) scale(1); }
+}
+
+/* sparkles */
+.kissSparkle {
+    position: fixed;
+    font-size: 14px;
+    pointer-events: none;
+}
+/* =========================
+   FINALE DAY
+========================= */
+
+.finalBtn {
+    background: linear-gradient(45deg,#ff2e88,#ff99c8);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(255,46,136,.4);
+    transition: .3s;
+}
+
+.finalBtn:hover {
+    transform: scale(1.1);
+}
+
+/* LOVE LETTER MODAL */
+.loveLetter {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0,0,0,.25);
+    z-index: 9999;
+    animation: letterPop .6s forwards;
+}
+
+@keyframes letterPop {
+    to { transform: translate(-50%,-50%) scale(1); }
+}
+
+.letterBtns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.letterBtns button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.foreverYes {
+    background: #ff2e88;
+    color: white;
+}
+
+.foreverNo {
+    background: #eee;
+    position: relative;
+}
+
+/* fireworks */
+.fireHeart {
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* glow */
+body.finalGlow {
+    animation: finalGlow 2s infinite alternate;
+}
+
+@keyframes finalGlow {
+    from { box-shadow: inset 0 0 80px rgba(255,120,180,.2); }
+    to   { box-shadow: inset 0 0 200px rgba(255,120,180,.45); }
+}
+body{
+    transition: opacity .6s ease;
+}
+.card{
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.card:hover{
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,.18);
+}
+.bgHeart{
+    position: fixed;
+    bottom: -20px;
+    opacity: .15;
+    animation: floatUp 6s linear forwards;
+    pointer-events:none;
+}
+body.dark{
+   background: linear-gradient(#1e1e3f,#2d2d5f);
+   color:white;
+}
