@@ -1,26 +1,26 @@
 /* =========================
-   SIMPLE DAILY UNLOCK SYSTEM
-   (NO HEIGHT TRICKS)
+   FIXED DAILY UNLOCK SYSTEM
 ========================= */
 
 const sections = document.querySelectorAll(".chapter");
 
-/* ✅ change this for testing */
-const today = new Date(); 
-// example test:
-
-
+// get today's date ONLY (ignore time completely)
+const today = new Date();
+today.setHours(0,0,0,0);
 
 sections.forEach(section => {
-    const unlockDate = new Date(section.dataset.date);
 
-    if (today >= unlockDate) {
+    const unlockDate = new Date(section.dataset.date);
+    unlockDate.setHours(0,0,0,0);
+
+    if (today.getTime() >= unlockDate.getTime()) {
         section.classList.remove("locked");
-        section.style.display = "flex"; // show
+        section.style.display = "flex";
     } else {
-        section.style.display = "none"; // hide completely
+        section.style.display = "none";
     }
 });
+
 
 
 /* =========================
@@ -796,4 +796,5 @@ setInterval(()=>{
     setTimeout(()=>h.remove(),6000);
 }, 600);
 toggle.onclick = ()=> document.body.classList.toggle("dark");
+
 
